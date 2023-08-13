@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package notepad;
 
 import java.io.*;
@@ -10,16 +7,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-/**
- *
- * @author PC
- */
+
 public class Notepad extends JFrame implements ActionListener, WindowListener {
 
  
-//    public static void main(String[] args) {
-//        // TODO code application logic here
-//    }
     
     JTextArea jta=new JTextArea();
     File fnameContainer;
@@ -52,7 +43,7 @@ public class Notepad extends JFrame implements ActionListener, WindowListener {
         createMenuItem(jmedit,"Copy");
         createMenuItem(jmedit,"Paste");
         
-        createMenuItem(jmhelp,"About Notepad");
+        createMenuItem(jmhelp,"About Text Editor");
         
         jmb.add(jmfile);
         jmb.add(jmedit);
@@ -63,7 +54,7 @@ public class Notepad extends JFrame implements ActionListener, WindowListener {
         setIconImage(Toolkit.getDefaultToolkit().getImage("notepad.gif"));
         addWindowListener(this);
         setSize(500,500);
-        setTitle("Untitle.txt - Notepad");
+        setTitle("Untitle.txt - Text Editor");
         setVisible(true);
     }
     
@@ -76,7 +67,7 @@ public class Notepad extends JFrame implements ActionListener, WindowListener {
     public void actionPerformed(ActionEvent e){
         JFileChooser jfc = new JFileChooser();
         if(e.getActionCommand().equals("New")){
-            this.setTitle("Untitle.txt-NotePad");
+            this.setTitle("Untitle.txt - Text Editor");
             jta.setText("");
             fnameContainer = null;
         }
@@ -86,7 +77,7 @@ public class Notepad extends JFrame implements ActionListener, WindowListener {
                 try{
                     File fyl=jfc.getSelectedFile();
                     OpenFile(fyl.getAbsolutePath());
-                    this.setTitle(fyl.getName()+" - Notepad");
+                    this.setTitle(fyl.getName()+" - Text Editor");
                     fnameContainer=fyl;
                 }catch(IOException k){}
             }
@@ -103,7 +94,7 @@ public class Notepad extends JFrame implements ActionListener, WindowListener {
                 try{
                     File fyl=jfc.getSelectedFile();
                     SaveFile(fyl.getAbsolutePath());
-                    this.setTitle(fyl.getName()+" - Notepad");
+                    this.setTitle(fyl.getName()+" - Text Editor");
                     fnameContainer = fyl;
                 }catch(Exception k){}
             }
@@ -118,8 +109,8 @@ public class Notepad extends JFrame implements ActionListener, WindowListener {
         else if(e.getActionCommand().equals("Paste")){
             jta.paste();
         }
-        else if(e.getActionCommand().equals("About Notepad")){
-            JOptionPane.showMessageDialog(this, "Created By : Arindam Karmakar","Notepad",JOptionPane.INFORMATION_MESSAGE);
+        else if(e.getActionCommand().equals("About Text Editor")){
+            JOptionPane.showMessageDialog(this, "Created By : Arindam Karmakar","Text Editor",JOptionPane.INFORMATION_MESSAGE);
         }
         else if(e.getActionCommand().equals("Cut")){
             jta.cut();
